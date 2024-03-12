@@ -4,6 +4,8 @@ const currentCity = document.querySelector('#cur-city');
 const cityInput = document.querySelector('#city');
 const weatherIcon = document.querySelector('.weather-icon');
 const submitBtn = document.querySelector('#submitButton');
+const weatherCon = document.querySelector('.condition');
+const weatherDiv = document.querySelector('.weather-div');
 
 let apikey = '528f9ac2392e42c8b31203951240703';
 let city = 'Toronto';
@@ -27,6 +29,7 @@ async function getData() {
         console.log(weather)
         getWeatherIcon(weather);
         currentCity.textContent = weather['location']['name'];
+        weatherCon.textContent = weather['current']['condition']['text'];
 
         try {
             let getCelcius = await weather['current']['temp_c']
@@ -43,20 +46,17 @@ async function getData() {
         }
     } catch (error) {
         console.log("Error occurred while making request", error);
+        alert('Invalid city. Please try again.')
     }
 }
 
-// try {
-//     let getFarenheit = await weather['current']['temp_f']
-//     farenheit.textContent = `${getFarenheit} °F`
-// } catch (farenheitError) {
-//     console.log("Error occurred while getting Fahrenheit", farenheitError);
-//     farenheit.textContent = "N/A";
-// }
-
 async function getWeatherIcon(data) {
-    let icon = data['current']['condition']['icon'];
-    weatherIcon.src = icon;
+    try {
+        let icon = data['current']['condition']['icon'];
+        weatherIcon.src = icon;
+    } catch (error) {
+        console.log('Error fetching icon.', error)
+    }
 }
 
 function update() {
