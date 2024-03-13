@@ -171,28 +171,28 @@ body {
     padding: 30px;
     flex-grow: 0;
     flex-shrink: 0;
+    gap: 1rem;
 }
 
 .temp {
     font-size: 1.5rem;
-    padding: 1rem;
 }
 
 .feels-like {
     font-size: 1.5rem;
-    padding: 1rem
 }
 
 #cur-city {
     font-size: 3rem;
     font-weight: bold;
-    padding: 1rem;
 }
 
-.weather-icon {
-    padding-top: 10px;
-}
+.weather-icon {}
 
 .condition {
     font-size: 1.5rem;
+}
+
+.time {
+    font-size: 1rem;
 }

@@ -6,6 +6,7 @@ const weatherIcon = document.querySelector('.weather-icon');
 const submitBtn = document.querySelector('#submitButton');
 const weatherCon = document.querySelector('.condition');
 const weatherDiv = document.querySelector('.weather-div');
+const time = document.querySelector('.time');
 
 let apikey = '528f9ac2392e42c8b31203951240703';
 let city = 'Toronto';
@@ -30,6 +31,7 @@ async function getData() {
         getWeatherIcon(weather);
         currentCity.textContent = weather['location']['name'];
         weatherCon.textContent = weather['current']['condition']['text'];
+        time.textContent = `Local Time: ${weather['location']['localtime']}`;
 
         try {
             let getCelcius = await weather['current']['temp_c']
